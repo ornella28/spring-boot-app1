@@ -1,11 +1,11 @@
-package se.lexicon.spring_boot_app.model;
+package se.lexicon.spring_boot_app.entity;
 
 import jakarta.persistence.*;
 
 import java.util.Objects;
 
 @Entity
-@Table(name = "tbl_user_profiles")
+@Table(name = "user_profiles")
 /*
 * created table user_profiles
 * */
@@ -18,9 +18,9 @@ public class UserProfile {
      * added column in the database  with required length and character
      * */
     private Long id;
-    @Column(length = 100)
+    @Column(nullable = false, length = 100)
     private String nickname;
-    @Column(length = 100)
+    @Column(nullable = false, length = 100)
     private String phoneNumber;
     @Column(length = 500)
     private String bio;
