@@ -1,20 +1,38 @@
 package se.lexicon.spring_boot_app.model;
 
+import jakarta.persistence.*;
+
 import java.util.Objects;
 
+@Entity
+@Table(name = "tbl_user_profiles")
+/*
+* created table user_profiles
+* */
 public class UserProfile {
-    private long id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)//
+     /*
+     * it will define Id as primary key
+     * added column in the database  with required length and character
+     * */
+    private Long id;
+    @Column(length = 100)
     private String nickname;
+    @Column(length = 100)
     private String phoneNumber;
+    @Column(length = 500)
     private String bio;
 
 
     //Getter and setters
-    public long getId() {
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -42,13 +60,14 @@ public class UserProfile {
         this.bio = bio;
     }
 
+
     //Constructor without parameter
 
     public UserProfile() {
     }
 
     //Constructor with parameter
-    public UserProfile(long id, String nickname, String phoneNumber, String bio) {
+    public UserProfile(Long id, String nickname, String phoneNumber, String bio) {
         this.id = id;
         this.nickname = nickname;
         this.phoneNumber = phoneNumber;
