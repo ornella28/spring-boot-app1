@@ -67,6 +67,7 @@ public class UserProfile {
     }
 
     //Constructor with parameter
+
     public UserProfile(Long id, String nickname, String phoneNumber, String bio) {
         this.id = id;
         this.nickname = nickname;
