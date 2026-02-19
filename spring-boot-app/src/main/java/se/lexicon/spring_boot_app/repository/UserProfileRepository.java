@@ -18,6 +18,7 @@ public interface UserProfileRepository extends JpaRepository<UserProfile, Long> 
 
     List<UserProfile> findByBioIsNotNull();
     List<UserProfile> findByNicknameStartingWith(String nickname);
+    long countByPhoneNumberStartingWith(String phoneNumber);
 
 
 
