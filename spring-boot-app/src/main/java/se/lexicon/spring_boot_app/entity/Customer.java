@@ -30,11 +30,11 @@ public class Customer {
     @Column(nullable = false, updatable = false)
     private Instant createdAt;
 
-    @OneToOne(optional = false)
+    @OneToOne(optional = false, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "address_id", nullable = false)
     private Address address;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "profile_id")
     private UserProfile userProfile;
 
