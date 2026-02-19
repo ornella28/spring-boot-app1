@@ -35,6 +35,9 @@ public class UserProfile {
     @Column(length = 500)
     private String bio;
 
+    @OneToOne(mappedBy = "userProfile")
+    private Customer customer;
+
 
 
 

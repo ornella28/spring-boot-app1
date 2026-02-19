@@ -30,6 +30,14 @@ public class Customer {
     @Column(nullable = false, updatable = false)
     private Instant createdAt;
 
+    @OneToOne(optional = false)
+    @JoinColumn(name = "address_id", nullable = false)
+    private Address address;
+
+    @OneToOne
+    @JoinColumn(name = "profile_id")
+    private UserProfile userProfile;
+
 
 
 
