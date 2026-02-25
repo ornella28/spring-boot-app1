@@ -1,34 +1,36 @@
 package se.lexicon.spring_boot_app.entity;
 
 import jakarta.persistence.*;
+import jakarta.persistence.criteria.Order;
 import lombok.*;
 
 import java.math.BigDecimal;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
 
 
 @Entity
-@Table(name = "products")
-public class Product {
+@Table(name = "order_items")
+public class OrderItem {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String name;
+    private int quantity;
 
     @Column(nullable = false)
-    private BigDecimal price;
+    private BigDecimal priceAtPurchase;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)// we use Fetch type Lazy to avoid heavier loads
-    @JoinColumn(name = "category_id", nullable = false)
-    private Category category;
+
+
+
 
 
 }
