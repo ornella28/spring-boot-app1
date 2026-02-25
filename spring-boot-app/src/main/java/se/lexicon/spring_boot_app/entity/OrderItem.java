@@ -1,7 +1,6 @@
 package se.lexicon.spring_boot_app.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.criteria.Order;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -27,6 +26,10 @@ public class OrderItem {
 
     @Column(nullable = false)
     private BigDecimal priceAtPurchase;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "order_id", nullable = false)
+    private Order  order;
 
 
 
