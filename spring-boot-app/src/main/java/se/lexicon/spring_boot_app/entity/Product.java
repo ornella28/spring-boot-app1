@@ -41,5 +41,9 @@ public class Product {
     )
     private Set<Promotion> promotions = new HashSet<>();
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "product_id", nullable = false)
+    private Product product;
+
 
 }
