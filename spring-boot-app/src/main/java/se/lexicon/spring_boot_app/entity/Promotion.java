@@ -28,4 +28,6 @@ public class Promotion {
 
     @Column(nullable = false)
     private LocalDate endDate;
+
+
 }
