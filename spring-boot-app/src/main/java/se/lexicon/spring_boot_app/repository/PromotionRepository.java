@@ -32,6 +32,11 @@ SELECT p FROM Promotion p WHERE p.startDate <= :date AND (p.endDate IS NULL OR p
     List<Promotion> findByEndDateIsNull();
 
     //find promotions active today
+    @Query("""
+
+SELECT p FROM Promotion p WHERE p.startDate <= CURRENT_DATE AND (p.endDate IS NULL OR p.endDate >= CURRENT_DATE)
+
+""")
 
     List<Promotion> findActiveToday();
 
