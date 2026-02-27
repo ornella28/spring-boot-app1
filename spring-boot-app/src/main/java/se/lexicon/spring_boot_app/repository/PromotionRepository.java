@@ -1,6 +1,7 @@
 package se.lexicon.spring_boot_app.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import se.lexicon.spring_boot_app.entity.Promotion;
 
@@ -11,6 +12,12 @@ import java.util.Optional;
 public interface PromotionRepository extends JpaRepository<Promotion, Long> {
 
     // find promotions that are active on a given date
+
+
+    @Query("""
+SELECT p FROM Promotion p WHERE p.startDate <= :date AND (p.endDate IS NULL OR p.endDate >= :date)
+
+""")
 
     List<Promotion> findActiveOn(@Param("date") LocalDate date);
 
