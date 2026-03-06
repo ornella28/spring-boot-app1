@@ -12,6 +12,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
+@Builder
 
 
 @Entity
