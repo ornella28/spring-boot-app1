@@ -10,6 +10,7 @@ import se.lexicon.spring_boot_app.entity.Customer;
 import se.lexicon.spring_boot_app.entity.Order;
 import se.lexicon.spring_boot_app.entity.OrderItem;
 import se.lexicon.spring_boot_app.entity.Product;
+import se.lexicon.spring_boot_app.exception.ResourceNotFoundException;
 import se.lexicon.spring_boot_app.mapper.OrderMapper;
 import se.lexicon.spring_boot_app.repository.CustomerRepository;
 import se.lexicon.spring_boot_app.repository.OrderRepository;
@@ -40,7 +41,7 @@ public class OrderServiceImpl implements OrderService {
         List<OrderItem> orderItems = new ArrayList<>();
         for (OrderItemRequest itemRequest : request.items()){
             Product product = productRepository.findById(itemRequest.id())
-                    .orElseThrow(()-> new RuntimeException("Product Not Found"));
+                    .orElseThrow(()-> new ResourceNotFoundException("Product Not Found"));
 
             OrderItem orderItem = new OrderItem();
             orderItem.setProduct(product);

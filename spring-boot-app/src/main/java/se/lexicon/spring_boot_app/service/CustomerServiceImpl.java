@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import se.lexicon.spring_boot_app.dto.request.CustomerRequest;
 import se.lexicon.spring_boot_app.dto.response.CustomerResponse;
 import se.lexicon.spring_boot_app.entity.Customer;
+import se.lexicon.spring_boot_app.exception.DuplicateResourceException;
+import se.lexicon.spring_boot_app.exception.ResourceNotFoundException;
 import se.lexicon.spring_boot_app.mapper.CustomerMapper;
 import se.lexicon.spring_boot_app.repository.CustomerRepository;
 
@@ -22,7 +24,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Transactional
     public CustomerResponse register(CustomerRequest request){
         if (customerRepository.existsByEmail(request.email())){
-            throw new IllegalArgumentException("Email already taken");
+            throw new DuplicateResourceException("Email already taken");
         }
 
         Customer customer = customerMapper.toEntity(request);
@@ -35,7 +37,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public CustomerResponse findById(Long id){
 
-        Customer customer = customerRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("Customer not found"));
+        Customer customer = customerRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Customer not found"));
 
         return customerMapper.toCustomerResponse(customer);
     }

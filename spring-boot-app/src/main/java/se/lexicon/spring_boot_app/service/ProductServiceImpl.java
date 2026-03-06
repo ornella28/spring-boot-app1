@@ -9,6 +9,7 @@ import se.lexicon.spring_boot_app.dto.request.ProductRequest;
 import se.lexicon.spring_boot_app.dto.response.ProductResponse;
 import se.lexicon.spring_boot_app.entity.Category;
 import se.lexicon.spring_boot_app.entity.Product;
+import se.lexicon.spring_boot_app.exception.ResourceNotFoundException;
 import se.lexicon.spring_boot_app.mapper.ProductMapper;
 import se.lexicon.spring_boot_app.repository.CategoryRepository;
 import se.lexicon.spring_boot_app.repository.ProductRepository;
@@ -28,7 +29,7 @@ public class ProductServiceImpl implements ProductService {
     public ProductResponse create(ProductRequest request){
 
         Category category = categoryRepository.findById(request.categoryId())
-                .orElseThrow(() -> new IllegalArgumentException("Category Not Found with id: " + request.categoryId()));
+                .orElseThrow(() -> new ResourceNotFoundException("Category Not Found with id: " + request.categoryId()));
 
         Product product = productMapper.toEntity(request, category);
         Product saved = productRepository.save(product);
