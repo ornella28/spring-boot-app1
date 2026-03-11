@@ -10,8 +10,8 @@ import se.lexicon.spring_boot_app.dto.response.CustomerResponse;
 import se.lexicon.spring_boot_app.service.CustomerService;
 
 
-@RestController
-@RequestMapping
+@RestController// Spring mvc annotation, handles http request, returns json responses
+@RequestMapping("/api/v1/customers")
 @RequiredArgsConstructor
 public class CustomerController {
 
@@ -24,7 +24,7 @@ public class CustomerController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
 
     }
-    @GetMapping("/{id}")
+    @GetMapping("/{id}")// we are fetching data
     public ResponseEntity<CustomerResponse> findById(@PathVariable Long id){
         CustomerResponse response = customerService.findById(id);
         return ResponseEntity.ok(response);
