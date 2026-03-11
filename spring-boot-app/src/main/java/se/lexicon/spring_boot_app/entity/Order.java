@@ -15,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @ToString(exclude = {"customer", "orderItems"})
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Builder
 
 @Entity
 @Table(name = "orders")

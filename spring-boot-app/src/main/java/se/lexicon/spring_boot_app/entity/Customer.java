@@ -10,9 +10,9 @@ import java.util.Objects;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @ToString
 @EqualsAndHashCode
+@Builder
 
 
 @Entity

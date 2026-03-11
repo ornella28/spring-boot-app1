@@ -10,8 +10,8 @@ import java.util.Objects;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @ToString
+@Builder
 @EqualsAndHashCode
 
 
